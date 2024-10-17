@@ -26,6 +26,9 @@ function App() {
 
     <div>
       <Calculadora a={5} b={10}/>
+      <Calculadora a={10} b={20}/>
+      <Calculadora a={15} b={30}/>
+      <Calculadora a={20} b={40}/>
     </div>
   );
 }
