@@ -1,24 +1,27 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Persona from './Components/Persona';
+import PersonaPerfil from './Components/PersonaPerfil';
+import Calculadora from './Components/Calculadora';
 
 function App() {
+  
+  const persona={
+    nombre:"Pedro",
+    apellido:"Garcia",
+    edad: 20
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    /*<div className="App">
+      <Persona/>
+      <PersonaPerfil nombre='Juan' apellido='Cortes' edad={19}/>
+      <PersonaPerfil {...persona}/>
+      <PersonaPerfil nombre='Juan' apellido='Cortes' edad={40}/>
+    </div>*/
+    <div>
+      <Calculadora A={20} B={10}/>
     </div>
   );
 }
