@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Persona from './Components/Persona';
 import PersonaPerfil from './Components/PersonaPerfil';
@@ -25,7 +24,10 @@ function App() {
     </div>*/
 
     <div>
-      <Calculadora a={5} b={10}/>
+      <Calculadora a={5} b={10} operation={1}/>
+      <Calculadora a={15} b={8} operation={2}/>
+      <Calculadora a={15} b={2} operation={3}/>
+      <Calculadora a={5} b={0} operation={4}/>
     </div>
   );
 }
