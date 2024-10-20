@@ -14,16 +14,17 @@ function Multiplicacion(a:number,b:number){
     return a*b;
 }
 
-function Factorial(a:number){
-    if (a < 0) {
-        return "El factorial no está definido para números negativos.";
-      }
+function Factorial(a:number, b:number){
+    
       let result = 1;
+      let result2 =1;
       for (let i = 2; i <= a; i++) {
         result *= i;
       }
-      return result;
-
+      for (let i = 2; i <= b; i++) {
+        result2 *= i;
+      }
+      return result;      
 }
 
 function Calculadora(props:Parametros) {
@@ -34,7 +35,9 @@ function Calculadora(props:Parametros) {
     <br />
     La Multiplicacion de los valores es: {Multiplicacion(props.a, props.b)}
     <br />
-    El factorial del número {props.a} es: {Factorial(props.a)}
+    El factorial del número {props.a} es: {Factorial(props.a, props.a)}
+    <br />
+    El factorial del número {props.b} es: {Factorial(props.b, props.b)}
     </div>
 
   )
