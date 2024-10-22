@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { EventEmitter } from 'stream';
 
 function Formulario() {
 
@@ -24,11 +25,13 @@ function Formulario() {
 
     }, [texto])
 
- 
 
    const manejadorCambioTexto = (e:any) =>{
         setTexto(e.target.value)
    }
+
+
+
   
   return (
     <div>
@@ -36,12 +39,14 @@ function Formulario() {
         <h1>Contador de letras</h1>
 
         <textarea name="" id=""
-        value={texto}
-        onChange={manejadorCambioTexto}
+          value={texto}
+          onChange={manejadorCambioTexto}
+          style={{ color: color }}
+        >
 
-        ></textarea>
+        </textarea>
 
-     <p style={{ color: color }}> La cantidad de letras ingresadas es :  {contadorTexto}</p>  
+        <p style={{ color: color }}> La cantidad de letras ingresadas es :  {contadorTexto}</p>  
     </div>
   )
 }
