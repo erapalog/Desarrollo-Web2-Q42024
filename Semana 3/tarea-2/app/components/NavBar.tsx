@@ -12,7 +12,7 @@ export default function NavBar() {
 
   return (
     <div style={{marginTop: '90px'}}>
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600" style={{backgroundColor: "#d7e9ff;"}}>
+    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600" style={{backgroundColor: "#d7e9ff"}}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
         <Image src={logo} alt="Unitec Logo" style={{width: 60}}/>
         <span className="text-2xl font-semibold whitespace-nowrap dark:text-white">Nosotros</span>

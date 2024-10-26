@@ -6,7 +6,7 @@ interface PropertiesCard {
     icon: string
 }
 
-export default function ButtonsOptionsCard ({title, content, icon}:PropertiesCard) {
+export default function CardOptionButtons ({title, content, icon}:PropertiesCard) {
     return (
         <main>
             <div>
