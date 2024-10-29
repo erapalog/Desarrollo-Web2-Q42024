@@ -5,6 +5,9 @@ import Image from 'next/image';
 import logo from '../app/logoUnitec.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {HomeIcon } from '@primer/octicons-react';
+import {RepoIcon} from '@primer/octicons-react';
+import {ServerIcon} from '@primer/octicons-react';
+import {CodespacesIcon} from '@primer/octicons-react';
 
 import "./globals.css";
 
@@ -52,13 +55,13 @@ export default function RootLayout({
                     <a href="../" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page"><HomeIcon size={24} />&nbsp;Home</a>
                   </li>
                   <li>
-                    <a href="/about" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tarea 2</a>
+                    <a href="/about" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"><RepoIcon size={24} />&nbsp;Tarea 2</a>
                   </li>
                   <li>
-                    <a href="/registro" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tarea 3</a>
+                    <a href="/registro" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"><ServerIcon size={24} />&nbsp;Tarea 3</a>
                   </li>
                   <li>
-                    <a href="/contact" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Nosotros</a>
+                    <a href="/contact" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"><CodespacesIcon size={24} />&nbsp;Nosotros</a>
                   </li>
                 </ul>
               </div>
