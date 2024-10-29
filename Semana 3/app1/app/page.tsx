@@ -1,4 +1,6 @@
-import Image from "next/image";
+import Link from "next/link";
+import style from '../EstilosGlobales/Button.module.css';
+
 
 export default function Home() {
   return (
@@ -6,6 +8,8 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         
        <h1>Primera Pagina Web!!!</h1>
+     
+       <Link href="/contacto" className={style.buttonlink}> Contacto</Link>
       </main>
      
     </div>
