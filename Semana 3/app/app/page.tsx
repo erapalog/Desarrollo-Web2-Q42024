@@ -1,4 +1,6 @@
-import Image from "next/image";
+import Link from "next/link";
+import style from '../EstilosGlobales/Button.module.css'
+
 
 export default function Home() {
   return (
@@ -6,8 +8,10 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         
       
-      <h1>Primera aplicacion en NextJs!!!!</h1>
-    
+      <h1>Primera aplicacion en NextJs</h1>
+
+      <Link href="/contacto" className={style.buttonLink}>Ir a contacto</Link>
+
       </main>
     
     </div>

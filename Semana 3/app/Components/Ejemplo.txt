@@ -10,3 +10,13 @@
                 <Link href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Otros</Link>
 
                                         <Link key={navItem.path} href={navItem.path} className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{navItem.text}</Link>
+
+
+
+--BD  --MySql, Mongo, Postgree, SQL , Oracle, maria
+------MySql, 
+
+--Node Js
+----Express js 
+
+--.env
