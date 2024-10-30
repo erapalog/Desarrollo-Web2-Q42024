@@ -7,7 +7,8 @@ export default function NavBar() {
  const navItem=[
     {path:'/contacto', text:"Contacto"},
     {path:'/about', text:"Informacion"},
-    {path:'/', text:"Otros"}
+    {path:'/', text:"Otros"},
+    {path:'/registro', text:'Registro'}
  ]
   return (
     <div>
