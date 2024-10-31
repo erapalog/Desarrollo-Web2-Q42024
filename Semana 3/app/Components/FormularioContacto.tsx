@@ -14,6 +14,7 @@ export default function FormularioContacto() {
 
  //va capturar el nombre, correo, descripcion, va mostrar si el formulario fue enviado o no
 
+  const [id, setId]= useState<number>(0);
   const [nombre, setNombre]= useState<string>('');
   const [correo, setCorreo] = useState<string> ('')
   const [descripcion, setDescription]= useState<string>('');
@@ -64,14 +65,26 @@ export default function FormularioContacto() {
 
     try {
       
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto`,{
-        method:'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({nombre,correo,descripcion})
-      })
+      let res ;
+      if(id!=0){
+         res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto/${id}`,{
+          method:'PUT',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({id,nombre,correo,descripcion})
+        })
+      }
+      else{
+         res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto`,{
+          method:'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({nombre,correo,descripcion})
+        })
+      }
+      
 
       if(res.ok){
         alert("Contacto creado exitosamen");
+        setId(0)
         setNombre("");
         setCorreo("");
         setDescription("");
@@ -86,6 +99,31 @@ export default function FormularioContacto() {
 
   }
 
+
+  const handleEditar = (contacto: Contacto) =>{
+
+    setId(contacto.id)
+    setNombre(contacto.nombre);
+    setCorreo(contacto.correo);
+    setDescription(contacto.descripcion);
+
+  }
+  const handleDelete = async (id:number) => {
+    if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto/${id}`, {
+                method: 'DELETE',
+            });
+            if (res.ok) {
+                cargarContactos()
+            } else {
+                alert('Error al eliminar usuario');
+            }
+        } catch (error) {
+            console.error("Error al eliminar usuario:", error);
+        }
+    }
+};
   return (
     <> 
     <form className="max-w-sm mx-auto" onSubmit={submitForm}>
@@ -134,6 +172,10 @@ export default function FormularioContacto() {
               <td>{contacto.nombre}</td>
               <td>{contacto.correo}</td>
               <td>{contacto.descripcion}</td>
+              <td>
+              <button type="button" className="btn btn-warning" onClick={()=> handleEditar(contacto)}>Editar</button>
+                <button type="button" className="btn btn-danger" onClick={()=> handleDelete(contacto.id)}>Eliminar</button>
+              </td>
 
             </tr>
           ))
