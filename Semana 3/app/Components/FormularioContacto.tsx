@@ -3,6 +3,13 @@
 
 import { useEffect, useState } from "react"
 
+ interface Contacto {
+  id: number
+  nombre: string
+  correo: string
+  descripcion: string
+}
+
 export default function FormularioContacto() {
 
  //va capturar el nombre, correo, descripcion, va mostrar si el formulario fue enviado o no
@@ -11,6 +18,8 @@ export default function FormularioContacto() {
   const [correo, setCorreo] = useState<string> ('')
   const [descripcion, setDescription]= useState<string>('');
   const [isSunmited, setSubmited]= useState<Boolean> (false);
+  const [dataContacto, setDataContacto]= useState([]);
+
 
   useEffect(()=>{
     console.log('Actualizacion en control', nombre)
@@ -25,10 +34,55 @@ export default function FormularioContacto() {
     console.log('Actualizacion en control', descripcion)
   }, [descripcion])
 
-  const submitForm =(e:any) =>{
+  
+ 
+
+  async function cargarContactos(){
+
+    try {
+      
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto`)
+      const data = await res.json()
+
+      setDataContacto(data)
+
+      console.log(data)
+
+    } catch (error) {
+      console.error("Ocurrio un error en la invocacion del servicio", error)
+    }
+
+  }
+
+  useEffect(()=>{
+    cargarContactos()
+  }, []);
+
+  const submitForm = async (e:any) =>{
     e.preventDefault();
     console.log("formulario Enviado con los datos: " , {nombre, correo, descripcion})
-    setSubmited(true)
+
+    try {
+      
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto`,{
+        method:'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({nombre,correo,descripcion})
+      })
+
+      if(res.ok){
+        alert("Contacto creado exitosamen");
+        setNombre("");
+        setCorreo("");
+        setDescription("");
+        cargarContactos()  
+      }
+      else{
+        alert("Ocurrio un error al invocar el servicio")
+      }
+    } catch (error) {
+      console.error(error)
+    }
 
   }
 
@@ -60,6 +114,33 @@ export default function FormularioContacto() {
 
         <button type="submit" className="btn btn-primary">Enviar informacion</button>
     </form>
+
+    <table className="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Descripcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+
+          dataContacto.map((contacto:Contacto) =>(
+
+            <tr key={contacto.id}>
+              <td>{contacto.id}</td>
+              <td>{contacto.nombre}</td>
+              <td>{contacto.correo}</td>
+              <td>{contacto.descripcion}</td>
+
+            </tr>
+          ))
+        }
+      </tbody>
+
+    </table>
 
     </>
   )

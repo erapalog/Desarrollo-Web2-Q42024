@@ -20,8 +20,6 @@ const Contacto = sequelize.define('contacto', {
         type:DataTypes.STRING,
         allowNull: false
     },
-    
-       
 },
 {
     tableName:'contacto',

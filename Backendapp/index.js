@@ -23,6 +23,7 @@ app.get('/contacto', async (req,res) =>{
 })
 
 
+//get,post, put, delete, patch
 app.post('/contacto', async (req,res) =>{
 
     try {
