@@ -66,6 +66,7 @@ export default function FormularioContacto() {
     try {
       
       let res ;
+      
       if(id!=0){
          res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto/${id}`,{
           method:'PUT',
