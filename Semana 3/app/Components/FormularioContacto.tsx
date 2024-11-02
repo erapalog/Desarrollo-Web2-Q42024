@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
   nombre: string
   correo: string
   descripcion: string
-}
+} 
 
 export default function FormularioContacto() {
 

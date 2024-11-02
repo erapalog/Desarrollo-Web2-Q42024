@@ -8,7 +8,7 @@ export default function NavBar() {
  const navItem=[
     {path:'/contacto', text:"Contacto" , icon: <AccessibilityIcon/>},
     {path:'/about', text:"Informacion", icon: <ArchiveIcon/>},
-    {path:'/', text:"Otros", icon: <BookIcon/>}
+    {path:'/configuracion', text:"Configuracion", icon: <BookIcon/>}
  ]
   return (
     <div>
