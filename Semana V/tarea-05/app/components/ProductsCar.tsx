@@ -29,6 +29,7 @@ export default function CardProducts() {
             <div className="table-scroll">
                 <table className="table table-striped table-hover border">
                     <thead>
+                    {car.length > 0 ?
                         <tr style={{textAlign: 'end'}}>
                         <th className="font-size-10">No.</th>
                         <th className="font-size-10"></th>
@@ -37,6 +38,8 @@ export default function CardProducts() {
                         <th className="font-size-10">Precio</th>
                         <th className="font-size-10">Total</th>
                         </tr>
+                      : null
+                      }
                     </thead>
                     <tbody>
                     {car.length > 0 ? (
@@ -60,8 +63,7 @@ export default function CardProducts() {
                   ) : 
             (
               <tr>
-                <td colSpan={6} className="text-center">
-                  Aún no has agregado nada a tu carrito de compras
+                <td colSpan={6} className="text-center"><div className="alert alert-warning" role="alert"><span><i className="fa fa-info-circle" Style={{FontSize: 12}}></i>&nbsp;Aún no has agregado nada a tu carrito de compras</span></div>
                 </td>
               </tr>
             )}
