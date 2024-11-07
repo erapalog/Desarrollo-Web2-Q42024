@@ -1,15 +1,17 @@
+'use client'
+import { useContextCarrito } from '@/Context/ProviderProducto'
 import Link from 'next/link'
 import React from 'react'
 
 export default function Nav() {
+
+    const {productoCarrito} = useContextCarrito()
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">Navbar</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                 
                     <ul className="nav justify-content-center">
                     <li className="nav-item">
                         <Link className="nav-link active" href="/">Inicio</Link>
@@ -17,7 +19,7 @@ export default function Nav() {
                     <li className="nav-item">
                         <Link className="nav-link" href="/carrito">
                         <button type="button" className="btn btn-primary">
-                        Carrito <span className="badge bg-secondary">0</span>
+                        Carrito <span className="badge bg-secondary">{productoCarrito.length}</span>
                         </button>
                         </Link>
                     </li>

@@ -1,10 +1,18 @@
 const express = require('express')
 const Producto= require('./Models/Producto')
 const Ventas= require('./Models/Venta')
+var cors = require('cors')
 
 const app= express()
 
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors())
 app.use(express.json())
+
 
 //get permitir consultar todos los contactos
 
@@ -44,6 +52,6 @@ app.post('/ventas', async (req,res) =>{
 
 
 
-app.listen(5001,()=>{
-    console.log('aplcacion ejecutando en puerto 5001')
+app.listen(5000,()=>{
+    console.log('aplcacion ejecutando en puerto 5000')
 })
