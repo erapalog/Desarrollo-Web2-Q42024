@@ -1,0 +1,216 @@
+.scale2:hover {
+    border-color: #007bff;
+    transform: scale(4);
+  }
+
+.nav-link:hover {
+    color: #007bff;
+    background-color: #f8f9fa;
+    text-decoration: underline;
+}
+
+.hover:hover {
+    background-color: black;
+}
+
+.hoverAL:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.modalHeader {
+    padding: 10px 10px 6px 10px;
+    background-color: #1e6463;
+    color: white;
+}
+
+.modalHeaderDelete {
+    padding: 10px 10px 6px 10px;
+    background-color: red;
+    color: white;
+}
+
+.formControlLabel {
+    color: #616060;
+    width: 20%;
+    background-color: #f6f6f6;
+}
+
+.formControlInput {
+    color: #444444;
+    text-align: start;
+}
+
+.formControlIcon {
+    width: 10%;
+    display: block;
+    align-items: center;
+    justify-items: center;
+    background-color: #f6f6f6;
+    font-size: 13px;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.modal-form-center {
+    text-align: -webkit-center;
+}
+
+.font-size-6 {
+    font-size: 6px;
+    font-family: sans-serif;
+}
+
+.font-size-7 {
+    font-size: 7px;
+    font-family: sans-serif;
+}
+
+.font-size-8 {
+    font-size: 8px;
+    font-family: sans-serif;
+}
+
+.font-size-9 {
+    font-size: 9px;
+    font-family: sans-serif;
+}
+
+.fontSize10 {
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+.fonSize11 {
+    font-size: 11px;
+    font-family: sans-serif;
+}
+
+.fontSize12 {
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.fontSize13 {
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+.fontSize14 {
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+.fontSize15 {
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.fontSize16 {
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.fontSize17 {
+    font-size: 17px;
+    font-family: sans-serif;
+}
+
+.fontSize18 {
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.fontSize19 {
+    font-size: 19px;
+    font-family: sans-serif;
+}
+
+.fontSize20 {
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.fontSize21 {
+    font-size: 21px;
+    font-family: sans-serif;
+}
+
+.fontSize22 {
+    font-size: 22px;
+    font-family: sans-serif;
+}
+
+.fontSize23 {
+    font-size: 23px;
+    font-family: sans-serif;
+}
+
+.fontSize24 {
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+.fontSize25 {
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+.fontSize26 {
+    font-size: 26px;
+    font-family: sans-serif;
+}
+
+.fontSize27 {
+    font-size: 27px;
+    font-family: sans-serif;
+}
+
+.fontSize28 {
+    font-size: 28px;
+    font-family: sans-serif;
+}
+
+.fontSize29 {
+    font-size: 29px;
+    font-family: sans-serif;
+}
+
+.fontSize30 {
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+.font-color-white {
+    color: white;
+}
+
+.font-color-gray {
+    color: gray;
+}
+
+.color-red {
+    color: red;
+}
+
+.color-green {
+    color: green;
+}
+
+.color-gray {
+    color: #726e6e;
+}
+
+.color-blue {
+    color: #0d6efd;
+}

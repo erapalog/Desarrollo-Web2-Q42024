@@ -1,0 +1,5 @@
+# Set the default behavior to automatically normalize line endings.
+* text=auto
+
+# Explicitly specify line endings for specific types if necessary.
+*.sh text eol=lf

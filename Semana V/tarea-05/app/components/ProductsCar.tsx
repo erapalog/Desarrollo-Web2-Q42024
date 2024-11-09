@@ -63,7 +63,7 @@ export default function CardProducts() {
                   ) : 
             (
               <tr>
-                <td colSpan={6} className="text-center"><div className="alert alert-warning" role="alert"><span><i className="fa fa-info-circle" Style={{FontSize: 12}}></i>&nbsp;Aún no has agregado nada a tu carrito de compras</span></div>
+                <td colSpan={6} className="text-center"><div className="alert alert-warning" role="alert"><span><i className="fa fa-info-circle" style={{fontSize: 12}}></i>&nbsp;Aún no has agregado nada a tu carrito de compras</span></div>
                 </td>
               </tr>
             )}
