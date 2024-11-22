@@ -15,7 +15,7 @@ app.get('/suma-salario-departamento', async(req,resp) =>{
         const result = await Empleado.findAll({
             attributes:[
                 'DEPARTMENT_ID',
-                [sequelize.fn('SUM', sequelize.col('SALARY')), 'Salario Total']
+                [sequelize.fn('SUM', sequelize.col('SALARY')), 'Salario_Total']
             ],
             group: ["DEPARTMENT_ID"]
         });
@@ -55,6 +55,21 @@ app.get('/maximo-salario-departamento/:idDeparment', async(req,resp) =>{
 
 });
 
+app.get('/count-deparment', async (req, res) => {
+    try {
+        const result = await Empleado.findAll({
+            attributes: [
+                'DEPARTMENT_ID',
+                'JOB_ID',
+                [sequelize.fn('COUNT', sequelize.col('*')), 'total_count'],
+            ],
+            group: ['DEPARTMENT_ID', 'JOB_ID'],
+        });
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 app.listen(port, ()=>{
     console.log('aplicacion ejecutando en puerto:' , port)
