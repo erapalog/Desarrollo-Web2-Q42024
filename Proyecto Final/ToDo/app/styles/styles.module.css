@@ -1,0 +1,354 @@
+.faIconTack {
+    font-size: 16px;
+    position: absolute;
+    top: 6px;
+    left: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+    transform: rotate(30deg);
+    z-index: 10;
+}
+
+.kanbanColumn {
+    width: 295px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 100px;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 145px);
+}
+
+.kanbanTitle {
+    font-size: 17px;
+    color: white;
+    margin-top: 1px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 2px;
+}
+
+.kanbanBoard {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.card {
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 12px;
+    border: solid 1px black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardTitle {
+    font-size: 11px;
+    color: black;
+    margin-bottom: 0px;
+    margin-left: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #FFCB001C;
+}
+
+.cardBody {
+    cursor: pointer;
+    font-size: 12px;
+    color: black;
+}
+
+.cardItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+}
+
+.modalHeader {
+    padding: 10px 10px 6px 10px;
+    background-color: #1e6463;
+    color: white;
+}
+
+.modalHeaderDelete {
+    padding: 10px 10px 6px 10px;
+    background-color: red;
+    color: white;
+}
+
+.formControlLabel {
+    color: #616060;
+    width: 20%;
+    background-color: #f6f6f6;
+}
+
+.formControlInput {
+    color: #444444;
+    text-align: start;
+}
+
+.formControlIcon {
+    width: 10%;
+    display: block;
+    align-items: center;
+    justify-items: center;
+    background-color: #f6f6f6;
+    font-size: 13px;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.modal-form-center {
+    text-align: -webkit-center;
+}
+
+.fontsize6 {
+    font-size: 6px;
+    font-family: sans-serif;
+}
+
+.fontSize7 {
+    font-size: 7px;
+    font-family: sans-serif;
+}
+
+.fontSize8 {
+    font-size: 8px;
+    font-family: sans-serif;
+}
+
+.fontSize9 {
+    font-size: 9px;
+    font-family: sans-serif;
+}
+
+.fontSize10 {
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+.fonSize11 {
+    font-size: 11px;
+    font-family: sans-serif;
+}
+
+.fontSize12 {
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.fontSize13 {
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+.fontSize14 {
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+.fontSize15 {
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.fontSize16 {
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.fontSize17 {
+    font-size: 17px;
+    font-family: sans-serif;
+}
+
+.fontSize18 {
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.fontSize19 {
+    font-size: 19px;
+    font-family: sans-serif;
+}
+
+.fontSize20 {
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.fontSize21 {
+    font-size: 21px;
+    font-family: sans-serif;
+}
+
+.fontSize22 {
+    font-size: 22px;
+    font-family: sans-serif;
+}
+
+.fontSize23 {
+    font-size: 23px;
+    font-family: sans-serif;
+}
+
+.fontSize24 {
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+.fontSize25 {
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+.fontSize26 {
+    font-size: 26px;
+    font-family: sans-serif;
+}
+
+.fontSize27 {
+    font-size: 27px;
+    font-family: sans-serif;
+}
+
+.fontSize28 {
+    font-size: 28px;
+    font-family: sans-serif;
+}
+
+.fontSize29 {
+    font-size: 29px;
+    font-family: sans-serif;
+}
+
+.fontSize30 {
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+.font-color-white {
+    color: white;
+}
+
+.font-color-gray {
+    color: gray;
+}
+
+.colorRed {
+    color: red;
+}
+
+.colorGreen {
+    color: green;
+}
+
+.colorGray {
+    color: #726e6e;
+}
+
+.colorBlue {
+    color: #0d6efd;
+}
+
+.color1 {
+    color: #FF0000;
+}
+
+.color2 {
+    color: #01DF01;
+}
+
+.color3 {
+    color: #0000FF;
+}
+
+.color4 {
+    color: #FF0040;
+}
+
+.color5 {
+    color: #FF00FF;
+}
+
+.color6 {
+    color: #5882FA;
+}
+
+.color7 {
+    color: #BF00FF;
+}
+
+.color8 {
+    color: #298A08;
+}
+
+.color9 {
+    color: #e0465e;
+}
+
+.color10 {
+    color: #FA5858;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .taskInfo {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+    height: 90vh;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #D8D8D8;
+}
+
+.box:nthChild(1) {
+    background-color: lightcoral;
+}
+
+.box:nthChild(2) {
+    background-color: lightblue;
+}
+
+.box:nthChild(3) {
+    background-color: lightgreen;
+}
+
+.box:nthChild(4) {
+    background-color: lightgoldenrodyellow;
+}
