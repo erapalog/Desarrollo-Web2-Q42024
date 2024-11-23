@@ -41,7 +41,7 @@ app.get('/maximo-salario-departamento/:idDeparment', async(req,resp) =>{
         const result = await Empleado.findAll({
             attributes:[
                 'DEPARTMENT_ID',
-                [sequelize.fn('MAX', sequelize.col('SALARY')), 'Salario Total']
+                [sequelize.fn('MAX', sequelize.col('SALARY')), 'Salario_Total']
             ],
             where: {DEPARTMENT_ID:idDeparment },
             group: ["DEPARTMENT_ID"]
@@ -64,6 +64,21 @@ app.get('/count-deparment', async (req, res) => {
                 [sequelize.fn('COUNT', sequelize.col('*')), 'total_count'],
             ],
             group: ['DEPARTMENT_ID', 'JOB_ID'],
+        });
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+app.get('/departamentos', async (req, res) => {
+    try {
+        const result = await Empleado.findAll({
+            attributes: [
+                [sequelize.fn('DISTINCT', sequelize.col('DEPARTMENT_ID')), 'DEPARTMENT_ID'],
+                'DEPARTMENT_ID',
+            ]
         });
         res.json(result);
     } catch (error) {

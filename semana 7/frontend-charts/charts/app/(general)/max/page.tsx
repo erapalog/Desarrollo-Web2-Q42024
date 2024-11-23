@@ -1,7 +1,10 @@
+import SalarioMaximo from '@/components/SalarioMaximo'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>page</div>
+   <>
+    <SalarioMaximo></SalarioMaximo>
+   </>
   )
 }
