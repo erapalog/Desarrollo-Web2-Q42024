@@ -1,10 +1,11 @@
 const express = require('express')
 const Producto = require('./modelos/Productos')
 const sequelize = require('./config/database')
-
+var cors = require('cors')
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/valorTotalxProducType', async (req,res)=>{
     try {
