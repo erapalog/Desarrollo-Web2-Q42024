@@ -1,109 +1,190 @@
-'use client';
 
-import { useEffect, useState } from 'react';
-import { Persona } from './Persona'
-import { Calculo } from './Calculo';
-import { New_Persona } from './New_Persona';
+'use client'
 
-export default function FormularioContactos() {
-  // Capturar Nombre, Correo y una descripción, y la afirmación si se va
-  const [cliente, setCliente] = useState<Persona[]>([]);
-  const [nombre, setNombre] = useState<string>('');
-  const [apellido, setApellido] = useState<string>('');
-  const [telefono, setTelefono] = useState<string>('');
-  const [correo, setCorreo] = useState<string>('');
-  const [nacimiento, setNacimiento] = useState<string>('');
+import { useEffect, useState } from "react"
 
- 
-  const handleSubmit = (e: React.FormEvent) => {
-    const resetForm = New_Persona(e, setCliente, cliente, nombre, apellido, telefono, correo, nacimiento);
-    setNombre(resetForm.nombre);
-    setApellido(resetForm.apellido);
-    setTelefono(resetForm.telefono);
-    setCorreo(resetForm.correo);
-    setNacimiento(resetForm.nacimiento);
-  };
-
-  return (
-    <>
-      <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="nombre" className="form-label">Nombre</label>
-          <input type="text" className="form-control" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="apellido" className="form-label">Apellido</label>
-          <input type="text" className="form-control" value={apellido} onChange={(e) => setApellido(e.target.value)} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="telefono" className="form-label">Teléfono</label>
-          <input type="text" className="form-control" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="correo" className="form-label">Correo</label>
-          <input type="email" className="form-control" value={correo} onChange={(e) => setCorreo(e.target.value)} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="fechaNacimiento" className="form-label">Fecha de Nacimiento</label>
-          <input type="date" className="form-control" value={nacimiento} onChange={(e) => setNacimiento(e.target.value)} />
-        </div>
-        <button type="submit" className="btn btn-primary">Registrar Usuario</button>
-      </form>
-
-      <h2 className="mt-5">Usuarios Registrados</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Edad</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cliente.map((cliente, index) => (
-            <tr key={index}>
-              <td>{cliente.nombre}</td>
-              <td>{cliente.apellido}</td>
-              <td>{cliente.telefono}</td>
-              <td>{cliente.correo}</td>
-              <td>{cliente.nacimiento}</td>
-              <td>{Calculo(cliente.nacimiento)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
-  );
+ interface Contacto {
+  id: number
+  nombre: string
+  correo: string
+  descripcion: string
 }
 
+export default function FormularioContacto() {
+
+ //va capturar el nombre, correo, descripcion, va mostrar si el formulario fue enviado o no
+
+  const [id, setId]= useState<number>(0);
+  const [nombre, setNombre]= useState<string>('');
+  const [correo, setCorreo] = useState<string> ('')
+  const [descripcion, setDescription]= useState<string>('');
+  const [isSunmited, setSubmited]= useState<Boolean> (false);
+  const [dataContacto, setDataContacto]= useState([]);
 
 
+  useEffect(()=>{
+    console.log('Actualizacion en control', nombre)
+  }, [nombre])
+
+  useEffect(()=>{
+    console.log('Actualizacion en control', correo)
+  }, [correo])
 
 
+  useEffect(()=>{
+    console.log('Actualizacion en control', descripcion)
+  }, [descripcion])
 
+  
+ 
 
-/*
-Codigo a futuro
+  async function cargarContactos(){
 
- useEffect(() => {
-    console.log('Actualización en control', nombre);
-  }, [nombre]);
+    try {
+      
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto`)
+      const data = await res.json()
 
-  useEffect(() => {
-    console.log('Actualización en control', correo);
-  }, [correo]);
+      setDataContacto(data)
 
-  useEffect(() => {
-    console.log('Actualización en control', descripcion);
-  }, [descripcion]);
+      console.log(data)
 
-  const submitForm = (e: any) => {
+    } catch (error) {
+      console.error("Ocurrio un error en la invocacion del servicio", error)
+    }
+
+  }
+
+  useEffect(()=>{
+    cargarContactos()
+  }, []);
+
+  const submitForm = async (e:any) =>{
     e.preventDefault();
-    console.log('Formulario Enviado con los datos: ', { nombre, correo, descripcion });
-    setSubmitted(true);
-  };
+    console.log("formulario Enviado con los datos: " , {nombre, correo, descripcion})
 
-*/ 
+    try {
+      
+      let res ;
+      
+      if(id!=0){
+         res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto/${id}`,{
+          method:'PUT',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({id,nombre,correo,descripcion})
+        })
+      }
+      else{
+         res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto`,{
+          method:'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({nombre,correo,descripcion})
+        })
+      }
+      
+
+      if(res.ok){
+        alert("Contacto creado exitosamen");
+        setId(0)
+        setNombre("");
+        setCorreo("");
+        setDescription("");
+        cargarContactos()  
+      }
+      else{
+        alert("Ocurrio un error al invocar el servicio")
+      }
+    } catch (error) {
+      console.error(error)
+    }
+
+  }
+
+
+  const handleEditar = (contacto: Contacto) =>{
+
+    setId(contacto.id)
+    setNombre(contacto.nombre);
+    setCorreo(contacto.correo);
+    setDescription(contacto.descripcion);
+
+  }
+  const handleDelete = async (id:number) => {
+    if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacto/${id}`, {
+                method: 'DELETE',
+            });
+            if (res.ok) {
+                cargarContactos()
+            } else {
+                alert('Error al eliminar usuario');
+            }
+        } catch (error) {
+            console.error("Error al eliminar usuario:", error);
+        }
+    }
+};
+  return (
+    <> 
+    <form className="max-w-sm mx-auto" onSubmit={submitForm}>
+
+        <div className="mb-5">
+            <label htmlFor="nombre" className="form-label">Nombre</label>
+            <input type="text" className="form-control" 
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            />
+        </div>
+        <div className="mb-5">
+            <label htmlFor="correo" className="form-label">Correo</label>
+            <input type="text" className="form-control"
+             value={correo}
+             onChange={(e)=> setCorreo(e.target.value)}
+             />
+        </div>
+        <div className="mb-5">
+            <label htmlFor="correo" className="form-label">Descripcion</label>
+            <textarea className="form-control" 
+             value={descripcion}
+             onChange={(e)=>setDescription(e.target.value)}
+             />
+        </div>
+
+        <button type="submit" className="btn btn-primary">Enviar informacion</button>
+    </form>
+
+    <table className="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Descripcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+
+          dataContacto.map((contacto:Contacto) =>(
+
+            <tr key={contacto.id}>
+              <td>{contacto.id}</td>
+              <td>{contacto.nombre}</td>
+              <td>{contacto.correo}</td>
+              <td>{contacto.descripcion}</td>
+              <td>
+              <button type="button" className="btn btn-warning" onClick={()=> handleEditar(contacto)}>Editar</button>
+                <button type="button" className="btn btn-danger" onClick={()=> handleDelete(contacto.id)}>Eliminar</button>
+              </td>
+
+            </tr>
+          ))
+        }
+      </tbody>
+
+    </table>
+
+    </>
+  )
+}
