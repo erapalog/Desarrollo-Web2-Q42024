@@ -14,23 +14,16 @@ interface TaskProps {
 
 const Tablero: React.FC<TaskProps> = ({ title, icon, color, idEstado }) => {
   const { listTask, randomColor } = UseContext();
-  const taskIdEstado = listTask.filter(task => task.idestado == Number(idEstado));
 
   return (
     <div>
       <div className={`card`}>
         <div className={`card-header`} style={{ backgroundColor: `${color}`, borderColor: `${color}` }}>
-          <h4 className={`${style.kanbanTitle} text-center`}>
-            <button type="button" className="btn btn-light position-relative">
-            {title}
-            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-              {taskIdEstado.length}
-              <span className="visually-hidden">Tareas</span>
-            </span>
-          </button></h4>
+          <h4 className={`${style.kanbanTitle} text-center`}>{title}</h4>
         </div>
         <div className={`${style.kanbanColumn} ${style[`${color}`]}`} style={{ backgroundColor: `${color}`, borderColor: `${color}` }}>
           {listTask.map((tasks) => (
+            Number(tasks.idestado) === Number(idEstado) ? (
               <div className={`${style.card} card`} key={tasks.id}>
                 <div className={`${style.cardTitle} card-header`}>
                   <span>
@@ -82,14 +75,21 @@ const Tablero: React.FC<TaskProps> = ({ title, icon, color, idEstado }) => {
                           </tr>
                         </tbody>
                       </table>
-                      <div style={{ borderTop: '1px solid #A4A4A4', paddingTop: '5px' }} className={`${style.fontSize9} mt-1`}>
-                        <i className='fa fa-user' style={{ fontSize: 10 }}></i>&nbsp;<b>Creado por: </b>{tasks.creado_por} &nbsp;|&nbsp;
-                        <i className='fa fa-calendar-o' style={{ fontSize: 10 }}></i>&nbsp;<b>Fecha: </b>{tasks.fecha_creacion}
+                      <div style={{ borderTop: '1px solid #A4A4A4', paddingTop: '5px', width: '100%' }} className={`${style.fontSize9} mt-1`}>
+                        <i className='fa fa-user' style={{ fontSize: 10 }}></i>&nbsp;Creado: <b></b>{tasks.creado_por} &nbsp;|&nbsp;&nbsp;
+                        <i className='fa fa-calendar-o' style={{ fontSize: 10 }}></i>&nbsp;<b></b>{tasks.fecha_creacion}
                       </div>
                     </div>
                   </div>
                 </div>
+                <div className="card-footer text-body-secondary d-flex justify-content-center align-items-center" >
+                  <button type="button" className="btn btn-outline-primary btn-sm"><i className='fa fa-check-circle' style={{ fontSize: 15 }}></i></button>&nbsp;
+                  <button type="button" className="btn btn-outline-primary btn-sm"><i className='fa fa-check-square-o' style={{ fontSize: 15 }}></i></button>&nbsp;
+                  <button type="button" className="btn btn-outline-primary btn-sm"><i className='fa fa-times-circle' style={{ fontSize: 15 }}></i></button>&nbsp;
+                  <button type="button" className="btn btn-outline-primary btn-sm"><i className='fa fa-trash' style={{ fontSize: 16 }}></i></button>&nbsp;
+                </div>
               </div>
+            ) : null
           ))}
         </div>
       </div>

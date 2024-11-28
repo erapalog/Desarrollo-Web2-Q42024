@@ -212,7 +212,7 @@ export default function Page() {
             },
             title: {
                 display: true,
-                text: 'Tareas creadas por mes',
+                text: 'Serie de tiempo de tareas creadas',
             },
             datalabels: {
                 display: true,
