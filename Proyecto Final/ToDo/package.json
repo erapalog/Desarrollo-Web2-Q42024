@@ -1,5 +1,5 @@
 {
-  "name": "examen-1",
+  "name": "ToDo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,15 +10,20 @@
   },
   "dependencies": {
     "@primer/octicons-react": "^19.12.0",
+    "axios": "^1.7.8",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.6",
     "chartjs-plugin-datalabels": "^2.2.0",
     "dotenv": "^16.4.5",
+    "expo": "^51.0.0",
     "next": "15.0.0",
     "react": "19.0.0-rc-65a56d0e-20241020",
+    "react-beautiful-dnd": "^13.1.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "19.0.0-rc-65a56d0e-20241020",
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "react-native-web": "~0.19.10",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",

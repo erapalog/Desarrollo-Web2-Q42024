@@ -17,33 +17,16 @@
     padding: 2px;
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 145px);
-    background-color:inherit;
-}
-
-/* Personalizar el scroll */
-.kanbanColumn::-webkit-scrollbar {
-    width: 8px; /* Establecer el ancho del scrollbar */
-}
-
-.kanbanColumn::-webkit-scrollbar-thumb {
-    background-color: inherit; /* Establecer el color del scrollbar igual al color de fondo */
-    border-radius: 4px; /* Bordes redondeados para el thumb */
-}
-
-/* Opcional: Cambiar el color cuando el usuario pasa el mouse por encima */
-.kanbanColumn::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.3); /* Color más oscuro al pasar el mouse */
+    min-height: calc(100vh - 165px);
 }
 
 .kanbanTitle {
-    font-size: 17px;
+    font-size: 15px;
     color: white;
     margin-top: 1px;
     position: sticky;
     top: 0;
     z-index: 1;
-    padding: 2px;
 }
 
 .kanbanBoard {
@@ -52,7 +35,21 @@
     gap: 20px;
     flex-wrap: nowrap;
     overflow-x: auto;
-    padding: 10px;
+    padding: 3px;
+    padding-left: 8px;
+}
+
+.kanbanColumn::-webkit-scrollbar {
+    width: 8px;
+}
+
+.kanbanColumn::-webkit-scrollbar-thumb {
+    background-color: inherit;
+    border-radius: 4px;
+}
+
+.kanbanColumn::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3); 
 }
 
 .card {
@@ -60,7 +57,6 @@
     cursor: pointer;
     margin: 5px;
     font-size: 12px;
-    border: solid 1px black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -78,7 +74,7 @@
 .cardBody {
     cursor: pointer;
     font-size: 12px;
-    color: black;
+    color: rgb(133, 133, 133);
 }
 
 .cardItems {
@@ -88,6 +84,17 @@
     align-items: start;
     text-align: start;
 }
+
+.task-card {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 4px;
+  }
+  
+  .task-card:active {
+    background-color: #f0f0f0;
+  }
 
 .modalHeader {
     padding: 10px 10px 6px 10px;

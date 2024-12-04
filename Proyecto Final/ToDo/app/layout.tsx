@@ -1,14 +1,11 @@
 'use client';
 import React, { } from 'react';
-import Image from "next/Image";
 import { Toaster } from "react-hot-toast";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../app/styles/globals.css";
 import './assets/font-awesome/css/font-awesome.min.css';
 import AppProvider from './context/Provider';
 import Link from 'next/link';
-import Tablero from './(general)/tablero/page';
-import style from './styles/styles.module.css';
 
 export default function RootLayout({ children }) {
 
@@ -31,32 +28,27 @@ export default function RootLayout({ children }) {
                   </svg>
                 </button>
               </div>
-              <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+              <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky" style={{ marginBottom: -12 }}>
                 <ul className="flex flex-col p-1 md:p-1 mt-1 border rounded-lg md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                  <li>
-                  <Link href="/">
-                    <button type="button" className="btn btn-primary"><i className='fa fa-home' style={{fontSize: 26}}></i>&nbsp;Home</button><span style={{paddingRight: 7}}></span>
-                  </Link>
+                  <li className='active'>
+                    <Link href="/estadisticas">
+                      <button type="button" className="btn btn-primary"><i className='fa fa-bar-chart' style={{ fontSize: 22 }}></i>&nbsp;Estadísticas</button><span style={{ paddingRight: 2 }}></span>
+                    </Link>
                   </li>
                   <Link href="/tablero">
-                    <button type="button" className="btn btn-primary"><i className='fa fa-building-o' style={{fontSize: 22}}></i>&nbsp;Tablero</button><span style={{paddingRight: 7}}></span>
+                    <button type="button" className="btn btn-primary"><i className='fa fa-building-o' style={{ fontSize: 22 }}></i>&nbsp;Tablero</button><span style={{ paddingRight: 7 }}></span>
                   </Link>
-                  <Link href="/resumen">
-                  <button type="button" className="btn btn-primary"><i className='fa fa-calculator' style={{fontSize: 22}}></i>&nbsp;Resumen</button><span style={{paddingRight: 7}}></span>
-                  </Link>
-                  <Link href="/estadisticas">
-                  <button type="button" className="btn btn-primary"><i className='fa fa-bar-chart' style={{fontSize: 22}}></i>&nbsp;Estadísticas</button><span style={{paddingRight: 2}}></span>
-                  </Link>
+
                 </ul>
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
 
 
 
-        {children}
-      </body>
-    </html>
+          {children}
+        </body>
+      </html>
     </AppProvider >
   );
 }

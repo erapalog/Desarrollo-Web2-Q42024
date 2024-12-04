@@ -10,6 +10,7 @@ export default function Page() {
     const Statuslabels = dataCountStatus.map((item: any) => item.estado);
     const Statustotal = dataCountStatus.map((item: any) => item.cantidad);
     const StatusColor = dataCountStatus.map((item: any) => item.color);
+    const StatusColorBorder = dataCountStatus.map((item: any) => item.border);
 
     const databar = {
         labels: Statuslabels,
@@ -17,7 +18,7 @@ export default function Page() {
             {
                 label: 'Cantidad',
                 data: Statustotal,
-                borderColor: StatusColor,
+                borderColor: StatusColorBorder,
                 backgroundColor: StatusColor,
                 borderWidth: 2,
             },
@@ -212,10 +213,10 @@ export default function Page() {
             },
             title: {
                 display: true,
-                text: 'Serie de tiempo de tareas creadas',
+                text: 'Serie de tiempo de tareas',
             },
             datalabels: {
-                display: true,
+                display: false,
                 color: 'black',
                 font: {
                     weight: 'none',

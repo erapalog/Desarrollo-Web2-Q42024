@@ -7,6 +7,7 @@ import { Status } from '../models/Status';
 import { Category } from '../models/Category';
 import { Priority } from '../models/Priority';
 import { DataChartCount } from '../models/DataChartCount';
+import {alertReactCrud} from '../utils/functions';
 
 configDotenv();
 const URL_API = process.env.NEXT_PUBLIC_URL_API;
@@ -29,17 +30,29 @@ export default function AppProvider({ children }: Props) {
   const [dataCountPriority, setDataCountPriority] = useState<DataChartCount[]>([]);
   const [dataCountTask, setDataCountTask] = useState<DataChartCount[]>([]);
 
+  const [id, setId] = useState(0);
+  const [tarea, setTarea] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [avance, setAvance] = useState(0);
+  const [prioridad, setPrioridad] = useState(0);
+  const [idestado, setIdestado] = useState(0);
+  const [idcategoria, setIdcategoria] = useState(0);
+
   useEffect(() => {
     const loadData = async () => {
-      try {
-        await Promise.all([loadStatus(), loadStatusCount(), loadCategory(), loadCategoryCount(), loadPriority(), loadPriorityCount(), loadTask(), loadTaskTotal()]);
-      } catch (error) {
-        console.error("Error loading data", error);
-      }
+      load();
     };
 
     loadData();
   }, []);
+
+  const load = async () => {
+    try {
+      await Promise.all([loadStatus(), loadStatusCount(), loadCategory(), loadCategoryCount(), loadPriority(), loadPriorityCount(), loadTask(), loadTaskTotal()]);
+    } catch (error) {
+      console.error("Error loading data", error);
+    }
+  }
 
   const loadTaskTotal = async () => {
     const response = await fetch(`${URL_API}/taskTotal`);
@@ -129,6 +142,76 @@ export default function AppProvider({ children }: Props) {
     }
   };
 
+  const updateTaskStatus = async () => {
+    const djson = {
+      "id_estado": idestado,
+      "modificado_por": "admin",
+      "avance": avance
+    };
+    console.info("borrando[" + id + "], nuevoEstado[" + idestado + "]");
+    const response = await fetch(`${URL_API}/update_estado/${id}`, { method: 'PUT', body: JSON.stringify(djson), headers: { 'Content-Type': 'application/json', } });
+
+    if (response.ok) {
+      const data = await response.json();
+      alertReactCrud("Tarea guardada exitosamente.", "success");
+      load();
+    } else {
+      console.info('Error:', response.status);
+      alertReactCrud("Lo sentimos, existe un error al guardar la tarea, ERROR "+response, "error");
+    }
+  }
+
+  const createTask = async () => {
+    const djson = {
+      "tarea": tarea,
+      "descripcion": descripcion,
+      "id_categoria": idcategoria,
+      "id_prioridad": prioridad,
+      "modificado_por": "admin"
+    };
+    console.info("Creando " + tarea);
+    console.info(djson);
+    const response = await fetch(`${URL_API}/`, { method: 'POST', body: JSON.stringify(djson), headers: { 'Content-Type': 'application/json', } });
+
+    if (response.ok) {
+      const data = await response.json();
+      alertReactCrud("Tarea guardada exitosamente.", "success");
+      load();
+    } else {
+      console.info('Error:', response.status);
+      alertReactCrud("Existe un error al crear la tarea. ERROR "+response, "error");
+    }
+  }
+
+  const editTask = async () => {
+    let avances = avance;
+
+    if (idestado === 4) {
+      avances = 100;
+    }
+
+    const djson = {
+      "tarea": tarea,
+      "descripcion": descripcion,
+      "id_categoria": idcategoria,
+      "id_prioridad": prioridad,
+      "id_estado": idestado,
+      "avance": avances,
+      "modificado_por": "admin"
+    };
+    
+    const response = await fetch(`${URL_API}/${id}`, { method: 'PUT', body: JSON.stringify(djson), headers: { 'Content-Type': 'application/json', } });
+
+    if (response.ok) {
+      const data = await response.json();
+      alertReactCrud("Tarea guardada exitosamente.", "success");
+      load();
+    } else {
+      console.info('Error:', response.status);
+      alertReactCrud("Existe un error al guardar la tarea. ERROR "+response, "error");
+    }
+  }
+
   const randomColor = (): string => {
     const classes = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9', 'color10'];
     const randomIndex = Math.floor(Math.random() * classes.length);
@@ -145,6 +228,14 @@ export default function AppProvider({ children }: Props) {
     dataCountPriority,
     listCategory,
     dataCountCategory,
+    updateTaskStatus, createTask, editTask,
+    id, setId,
+    tarea, setTarea,
+    descripcion, setDescripcion,
+    avance, setAvance,
+    prioridad, setPrioridad,
+    idestado, setIdestado,
+    idcategoria, setIdcategoria
   };
 
   return (
